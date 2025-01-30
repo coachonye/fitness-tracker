@@ -1,0 +1,69 @@
+<div class="dashboard">
+    <div class="dashboard-header">
+        <img src="/images/fitness-banner.jpg" alt="Fitness motivation banner showing people exercising" class="hero-image">
+        <h1>Welcome to Your Fitness Tracker</h1>
+    </div>
+    
+    <% if (locals.user) { %>
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <img src="/images/icons/dumbbell-icon.png" alt="Dumbbell icon representing total workouts" class="stat-icon">
+                <h3>Total Workouts</h3>
+                <p class="stat-number"><%= workouts ? workouts.length : 0 %></p>
+            </div>
+            <div class="stat-card">
+                <img src="/images/icons/calendar-icon.png" alt="Calendar icon representing this week's workouts" class="stat-icon">
+                <h3>This Week</h3>
+                <p class="stat-number">0</p>
+            </div>
+            <div class="stat-card">
+                <img src="/images/icons/timer-icon.png" alt="Timer icon representing total exercise minutes" class="stat-icon">
+                <h3>Total Minutes</h3>
+                <p class="stat-number">0</p>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="recent-workouts">
+                <div class="section-header">
+                    <h2>Your Recent Workouts</h2>
+                    <a href="/workouts/new" class="btn">Add New Workout</a>
+                </div>
+                <div class="workout-grid">
+                    <% if (workouts && workouts.length > 0) { %>
+                        <% workouts.forEach(workout => { %>
+                            <div class="workout-card">
+                                <div class="workout-icon">
+                                    <img src="/images/icons/workout-icon.png" alt="<%= workout.type %> workout icon">
+                                </div>
+                                <div class="workout-info">
+                                    <h3><%= workout.type.charAt(0).toUpperCase() + workout.type.slice(1) %></h3>
+                                    <p>Duration: <%= workout.duration %> minutes</p>
+                                    <p>Date: <%= new Date(workout.date).toLocaleDateString() %></p>
+                                </div>
+                                <a href="/workouts/<%= workout._id %>" class="btn">View Details</a>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <div class="empty-state">
+                            <img src="/images/icons/workout-icon.png" alt="No workouts illustration" class="empty-illustration">
+                            <p>No workouts yet. <a href="/workouts/new">Add your first workout!</a></p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="welcome-section">
+            <div class="welcome-content">
+                <h2>Track Your Fitness Journey</h2>
+                <p>Join us to start tracking your workouts and achieve your fitness goals!</p>
+                <div class="welcome-buttons">
+                    <a href="/login" class="btn">Login</a>
+                    <a href="/signup" class="btn btn-outline">Sign Up</a>
+                </div>
+            </div>
+            <img src="/images/workout-icon.jpg" alt="Fitness tracking features illustration" class="welcome-image">
+        </div>
+    <% } %>
+</div>

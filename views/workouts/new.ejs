@@ -1,0 +1,26 @@
+<div class="workout-form">
+    <h2>Add New Workout</h2>
+    <form action="/workouts" method="POST">
+        <div class="form-group">
+            <label for="type">Workout Type:</label>
+            <select id="type" name="type" required>
+                <option value="cardio">Cardio</option>
+                <option value="strength">Strength Training</option>
+                <option value="yoga">Yoga</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration (minutes):</label>
+            <input type="number" id="duration" name="duration" required>
+        </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn">Add Workout</button>
+    </form>
+</div>

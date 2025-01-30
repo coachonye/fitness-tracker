@@ -1,0 +1,14 @@
+<nav class="navbar">
+    <div class="nav-brand">Fitness Tracker</div>
+    <div class="nav-links">
+        <% if (locals.user) { %>
+            <a href="/">Dashboard</a>
+            <a href="/workouts">My Workouts</a>
+            <a href="/workouts/new">Add Workout</a>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+        <% } %>
+    </div>
+</nav>

@@ -1,0 +1,36 @@
+<div class="workout-page">
+    <div class="page-header">
+        <h1>My Workouts</h1>
+        <a href="/workouts/new" class="btn">Add New Workout</a>
+    </div>
+
+    <% if (locals.error) { %>
+        <div class="message error">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <div class="workout-grid">
+        <% if (workouts && workouts.length > 0) { %>
+            <% workouts.forEach(workout => { %>
+                <div class="workout-card">
+                    <div class="workout-card-header">
+                        <h3><%= workout.type.charAt(0).toUpperCase() + workout.type.slice(1) %></h3>
+                        <span class="date"><%= new Date(workout.date).toLocaleDateString() %></span>
+                    </div>
+                    <div class="workout-card-body">
+                        <p>Duration: <%= workout.duration %> minutes</p>
+                        <% if (workout.description) { %>
+                            <p class="description"><%= workout.description %></p>
+                        <% } %>
+                    </div>
+                    <div class="workout-card-footer">
+                        <a href="/workouts/<%= workout._id %>" class="btn">View Details</a>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p class="no-workouts">No workouts found. <a href="/workouts/new">Add your first workout!</a></p>
+        <% } %>
+    </div>
+</div>

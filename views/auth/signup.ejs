@@ -1,0 +1,24 @@
+<div class="auth-form">
+    <h2>Sign Up</h2>
+    <% if (locals.error) { %>
+        <div class="message error">
+            <%= error %>
+        </div>
+    <% } %>
+    <form action="/signup" method="POST">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="<%= locals.username || '' %>" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<%= locals.email || '' %>" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
+</div>
